@@ -1,16 +1,16 @@
 package com.idd.openweatherapp.model
 
 
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.google.gson.annotations.SerializedName
 
 /**
  * Created by ignaciodeandreisdenis on 8/5/20.
  */
-@Entity(tableName = "current_weather")
+@Entity(
+    tableName = "current_weather",
+    indices = [Index("id")]
+)
 data class CurrentWeather(
     @PrimaryKey
     @field:SerializedName("id")
