@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_navigation">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/fragmentSplash">
 
+    <fragment
+        android:id="@+id/fragmentSplash"
+        android:name="com.idd.openweatherapp.ui.splash.FragmentSplash"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" />
+    <fragment
+        android:id="@+id/fragmentCityList"
+        android:name="com.idd.openweatherapp.ui.citylist.FragmentCityList"
+        android:label="fragment_city_list_fragment"
+        tools:layout="@layout/fragment_city_list_fragment" />
+    <fragment
+        android:id="@+id/fragmentCityWeatherDetail"
+        android:name="com.idd.openweatherapp.ui.weatherdetail.FragmentCityWeatherDetail"
+        android:label="fragment_city_weather_detail_fragment"
+        tools:layout="@layout/fragment_city_weather_detail_fragment" />
 </navigation>

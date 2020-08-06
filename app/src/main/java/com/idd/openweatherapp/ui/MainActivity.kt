@@ -20,12 +20,5 @@ class MainActivity : AppCompatActivity() {
 
         val currentWeather = MockData.mockCurrentWeather(this)
 
-        activity_main_create_button?.setOnClickListener {
-            mainViewModel.createCurrentWeather(currentWeather)
-        }
-
-        activity_main_see_button?.setOnClickListener {
-            mainViewModel.readCurrentWeather()
-        }
     }
 }
