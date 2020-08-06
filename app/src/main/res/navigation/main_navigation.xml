@@ -9,7 +9,13 @@
         android:id="@+id/fragmentSplash"
         android:name="com.idd.openweatherapp.ui.splash.FragmentSplash"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_fragmentSplash_to_fragmentCityList"
+            app:destination="@id/fragmentCityList"
+            app:popUpTo="@id/fragmentSplash"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentCityList"
         android:name="com.idd.openweatherapp.ui.citylist.FragmentCityList"

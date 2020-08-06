@@ -2,17 +2,15 @@ package com.idd.openweatherapp.ui.citylist
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.idd.openweatherapp.R
+import com.idd.openweatherapp.ui.common.FragmentBase
 
-class FragmentCityList : Fragment() {
-
-    companion object {
-        fun newInstance() = FragmentCityList()
-    }
+class FragmentCityList : FragmentBase() {
 
     private lateinit var viewModel: FragmentCityListViewModel
 
@@ -20,6 +18,7 @@ class FragmentCityList : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.fragment_city_list_fragment, container, false)
     }
 
