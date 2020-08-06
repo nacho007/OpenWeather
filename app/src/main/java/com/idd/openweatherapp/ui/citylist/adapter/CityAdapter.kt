@@ -11,10 +11,6 @@ import kotlinx.android.synthetic.main.row_city.view.*
  * Created by ignaciodeandreisdenis on 8/6/20.
  */
 
-interface OnCityPressed {
-    fun onCityPressed(city: String?)
-}
-
 class CityAdapter(
     private val cities: ArrayList<String>?,
     private val onCityPressed: OnCityPressed
