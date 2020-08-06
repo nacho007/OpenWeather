@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets
 object MockData {
 
     fun mockCurrentWeather(context: Context): CurrentWeather {
-        val currentWeather = loadJSONFromAsset(context, "current_weather2.json")
+        val currentWeather = loadJSONFromAsset(context, "current_weather.json")
         return Gson().fromJson(currentWeather, CurrentWeather::class.java)
     }
 

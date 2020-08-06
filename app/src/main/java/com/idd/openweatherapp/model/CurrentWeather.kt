@@ -1,9 +1,11 @@
 package com.idd.openweatherapp.model
 
 
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import com.idd.openweatherapp.db.Converter
 
 /**
  * Created by ignaciodeandreisdenis on 8/5/20.
@@ -16,9 +18,9 @@ data class CurrentWeather(
     @field:Embedded
     @field:SerializedName("coord")
     val coord: Coord,
-//    @field:Embedded
     @field:SerializedName("weather")
-    val weather: ArrayList<Int>?,
+    @ColumnInfo(name = "weather")
+    val weather: List<Weather> = arrayListOf(),
     @field:Embedded
     @field:SerializedName("main")
     val main: Main,
@@ -29,6 +31,7 @@ data class CurrentWeather(
     @field:SerializedName("sys")
     val sys: Sys
 ) {
+
     data class Coord(
         @ColumnInfo(name = "lon")
         @field:SerializedName("lon")
@@ -37,20 +40,19 @@ data class CurrentWeather(
         @ColumnInfo(name = "lat") val lat: Double
     )
 
-//    data class Weather(
-//        @ColumnInfo(name = "id_weather")
-//        @field:SerializedName("id")
-//        val id: Int,
-//        @ColumnInfo(name = "main")
-//        @field:SerializedName("main")
-//        val main: String,
-//        @ColumnInfo(name = "description")
-//        @field:SerializedName("description")
-//        val description: String,
-//        @ColumnInfo(name = "icon")
-//        @field:SerializedName("icon")
-//        val icon: String
-//    )
+    data class Weather(
+        @field:SerializedName("id")
+        val id: Int,
+        @ColumnInfo(name = "main")
+        @field:SerializedName("main")
+        val main: String,
+        @ColumnInfo(name = "description")
+        @field:SerializedName("description")
+        val description: String,
+        @ColumnInfo(name = "icon")
+        @field:SerializedName("icon")
+        val icon: String
+    )
 
     data class Main(
         @ColumnInfo(name = "temp")
