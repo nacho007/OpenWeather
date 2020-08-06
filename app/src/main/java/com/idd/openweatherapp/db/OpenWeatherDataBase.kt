@@ -4,16 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.room.TypeConverters
 import com.idd.openweatherapp.model.CurrentWeather
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 /**
  * Created by ignaciodeandreisdenis on 8/5/20.
  */
 @Database(entities = [CurrentWeather::class], version = 1)
+@TypeConverters(Converter::class)
 abstract class OpenWeatherDataBase : RoomDatabase() {
 
     abstract fun currentWeatherDao(): CurrentWeatherDao
@@ -35,7 +34,7 @@ abstract class OpenWeatherDataBase : RoomDatabase() {
                         // Wipes and rebuilds instead of migrating if no Migration object.
                         // Migration is not part of this codelab.
                         .fallbackToDestructiveMigration()
-                        .addCallback(OpenWeatherDataBaseCallback(scope))
+                        .addCallback(OpenWeatherDataBaseCallback())
                         .build()
                     INSTANCE = instance
                     // return instance
@@ -43,29 +42,7 @@ abstract class OpenWeatherDataBase : RoomDatabase() {
                 }
         }
 
-        private class OpenWeatherDataBaseCallback(
-            private val scope: CoroutineScope
-        ) : RoomDatabase.Callback() {
-            /**
-             * Override the onOpen method to populate the database.
-             * For this sample, we clear the database every time it is created or opened.
-             */
-            override fun onOpen(db: SupportSQLiteDatabase) {
-                super.onOpen(db)
-                // If you want to keep the data through app restarts,
-                // comment out the following line.
-                INSTANCE?.let { database ->
-                    scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.currentWeatherDao())
-                    }
-                }
-            }
-        }
+        private class OpenWeatherDataBaseCallback : RoomDatabase.Callback()
 
-        fun populateDatabase(currentWeatherDao: CurrentWeatherDao) {
-            // Start the app with a clean database every time.
-            // Not needed if you only populate on creation.
-            currentWeatherDao.deleteAll()
-        }
     }
 }

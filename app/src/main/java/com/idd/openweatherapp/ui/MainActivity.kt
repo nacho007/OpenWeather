@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.idd.openweatherapp.R
+import com.idd.openweatherapp.utils.MockData
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -17,8 +18,10 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
+        val currentWeather = MockData.mockCurrentWeather(this)
+
         activity_main_create_button?.setOnClickListener {
-            mainViewModel.createCurrentWeather()
+            mainViewModel.createCurrentWeather(currentWeather)
         }
 
         activity_main_see_button?.setOnClickListener {
