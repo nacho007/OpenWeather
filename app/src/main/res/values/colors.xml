@@ -3,7 +3,14 @@
     <color name="colorPrimary">@color/color_17</color>
     <color name="colorPrimaryDark">@color/color_16</color>
     <color name="colorAccent">@color/color_22</color>
+
     <color name="colorText">@color/color_22</color>
+    <color name="colorShadow">#32c3c3c3</color>
+
+    <color name="colorBalloonBackground">@color/color_0</color>
+    <color name="colorBalloonBackgroundPressed">#32c3c3c3</color>
+
+    <color name="colorListItemDivider">#e1e1e1</color>
 
     <color name="color_0">#ffffff</color>
     <color name="color_1">#EF9A9A</color>
