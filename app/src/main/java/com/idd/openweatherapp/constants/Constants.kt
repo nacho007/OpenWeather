@@ -5,6 +5,4 @@ package com.idd.openweatherapp.constants
  */
 
 
-const val DELAY = 2000L
-
-//"Montevideo", "Londres", "San Pablo", "Buenos Aires" y "Munich"
+const val DELAY = 500L
