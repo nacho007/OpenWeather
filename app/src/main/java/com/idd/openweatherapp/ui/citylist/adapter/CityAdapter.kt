@@ -30,7 +30,6 @@ class CityAdapter(
         holder.bind(city = cities?.get(position), onCityPressed = onCityPressed)
     }
 
-
     class CityViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
 
         fun setItem(city: String?) {

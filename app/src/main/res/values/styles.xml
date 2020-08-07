@@ -9,16 +9,19 @@
         <item name="buttonStyle">@style/ButtonStyle</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
+        <item name="buttonStyle">@style/ButtonStyle</item>
+    </style>
+
     <style name="TextViewStyle" parent="@android:style/Widget.TextView">
         <item name="android:textColor">@color/colorText</item>
         <item name="android:textSize">@dimen/text_size_3</item>
         <item name="android:fontFamily">@font/myriadprolight</item>
-    </style>
-
-    <style name="TextViewSplashStyle" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/colorText</item>
-        <item name="android:textSize">@dimen/text_size_7</item>
-        <item name="android:fontFamily">@font/myriadprobold</item>
     </style>
 
     <style name="TextViewCityStyle" parent="@android:style/Widget.TextView">
