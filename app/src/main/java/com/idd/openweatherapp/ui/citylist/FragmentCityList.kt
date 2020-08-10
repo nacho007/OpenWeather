@@ -10,7 +10,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.idd.openweatherapp.R
-import com.idd.openweatherapp.constants.DELAY
 import com.idd.openweatherapp.ui.citylist.adapter.CityAdapter
 import com.idd.openweatherapp.ui.citylist.adapter.OnCityPressed
 import com.idd.openweatherapp.ui.citylist.adapter.SimpleDividerItemDecoration
