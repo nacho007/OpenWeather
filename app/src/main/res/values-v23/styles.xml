@@ -6,7 +6,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@drawable/background</item>
         <item name="android:textViewStyle">@style/TextViewStyle</item>
-        <item name="buttonStyle">@style/ButtonStyle</item>
     </style>
 
 </resources>

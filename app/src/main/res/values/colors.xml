@@ -8,7 +8,7 @@
     <color name="colorShadow">#32c3c3c3</color>
 
     <color name="colorBalloonBackground">@color/color_0</color>
-    <color name="colorBalloonBackgroundPressed">#32c3c3c3</color>
+    <color name="colorBalloonBackgroundPressed">@color/colorListItemDivider</color>
 
     <color name="colorListItemDivider">#e1e1e1</color>
 

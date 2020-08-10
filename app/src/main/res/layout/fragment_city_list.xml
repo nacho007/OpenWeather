@@ -7,69 +7,17 @@
     android:background="@color/colorPrimary"
     tools:context=".ui.citylist.FragmentCityList">
 
-    <TextView
-        android:id="@+id/fragment_city_list_choose_city_text_view"
-        android:layout_width="wrap_content"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_city_list_recycler_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/select_a_city"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        android:layout_gravity="top"
+        android:layout_margin="@dimen/margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/row_city" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/fragment_city_list_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_margin="@dimen/margin"
-            android:background="@drawable/shape_balloon_alone"
-            tools:listitem="@layout/row_city" />
-
-    </FrameLayout>
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
-        android:text="@string/search_by_current_location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
-
-    <Button
-        android:id="@+id/fragment_city_list_search_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/search"
-        android:layout_marginTop="@dimen/margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

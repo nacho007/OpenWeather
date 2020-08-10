@@ -50,10 +50,6 @@ class FragmentCityList : FragmentBase(), OnCityPressed {
         )
 
         fragment_city_list_recycler_view.adapter = cityAdapter
-
-        fragment_city_list_search_button?.setOnClickListener {
-            Toast.makeText(context, "Search pressed", Toast.LENGTH_SHORT).show()
-        }
     }
 
     override fun onCityPressed(city: String?) {
