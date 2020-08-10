@@ -23,7 +23,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>
         val dbSource by lazy {
             loadFromDb()
         }
-        
+
         result.addSource(dbSource) { data ->
             result.removeSource(dbSource)
             if (shouldFetch(data)) {
