@@ -1,21 +1,23 @@
 package com.idd.openweatherapp.ui.weatherdetail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.idd.openweatherapp.R
+import com.idd.openweatherapp.ui.citylist.FragmentCityListViewModel
 
 class FragmentCityWeatherDetail : Fragment() {
 
-    companion object {
-        fun newInstance() =
-            FragmentCityWeatherDetail()
-    }
+    val viewModel: FragmentCityWeatherDetailViewModel by viewModels()
 
-    private lateinit var viewModel: FragmentCityWeatherDetailViewModel
+    private val args: FragmentCityWeatherDetailArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,10 +26,9 @@ class FragmentCityWeatherDetail : Fragment() {
         return inflater.inflate(R.layout.fragment_city_weather_detail, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(FragmentCityWeatherDetailViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val cityName = args.cityName
+        Log.e("City", cityName)
     }
 
 }

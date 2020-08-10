@@ -20,10 +20,18 @@
         android:id="@+id/fragmentCityList"
         android:name="com.idd.openweatherapp.ui.citylist.FragmentCityList"
         android:label="fragment_city_list_fragment"
-        tools:layout="@layout/fragment_city_list" />
+        tools:layout="@layout/fragment_city_list" >
+        <action
+            android:id="@+id/action_fragmentCityList_to_fragmentCityWeatherDetail"
+            app:destination="@id/fragmentCityWeatherDetail" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentCityWeatherDetail"
         android:name="com.idd.openweatherapp.ui.weatherdetail.FragmentCityWeatherDetail"
         android:label="fragment_city_weather_detail_fragment"
-        tools:layout="@layout/fragment_city_weather_detail" />
+        tools:layout="@layout/fragment_city_weather_detail" >
+        <argument
+            android:name="cityName"
+            app:argType="string" />
+    </fragment>
 </navigation>

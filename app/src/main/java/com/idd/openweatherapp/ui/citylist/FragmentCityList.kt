@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.idd.openweatherapp.R
 import com.idd.openweatherapp.ui.citylist.adapter.CityAdapter
@@ -52,7 +53,11 @@ class FragmentCityList : FragmentBase(), OnCityPressed {
     }
 
     override fun onCityPressed(city: String?) {
-        Toast.makeText(context, city, Toast.LENGTH_SHORT).show()
+        val action =
+            FragmentCityListDirections.actionFragmentCityListToFragmentCityWeatherDetail(
+                city ?: "No City"
+            )
+        findNavController().navigate(action)
     }
 
 }
