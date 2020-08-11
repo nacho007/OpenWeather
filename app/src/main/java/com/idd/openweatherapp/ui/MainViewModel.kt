@@ -1,13 +1,7 @@
 package com.idd.openweatherapp.ui
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
-import com.idd.openweatherapp.db.OpenWeatherDataBase
-import com.idd.openweatherapp.model.CurrentWeather
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 /**
  * Created by ignaciodeandreisdenis on 8/5/20.
