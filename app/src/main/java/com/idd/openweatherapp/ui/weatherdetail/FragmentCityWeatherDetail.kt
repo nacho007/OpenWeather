@@ -38,7 +38,7 @@ class FragmentCityWeatherDetail : Fragment() {
 
         viewModel.setCityName(cityName)
 
-        viewModel.currentWeather.observe(viewLifecycleOwner, Observer { userResource ->
+        viewModel.currentWeather.observe(viewLifecycleOwner, Observer { currentWeather ->
             Log.e("sdf", "sdf")
         })
 

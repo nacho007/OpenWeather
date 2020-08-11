@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/row_city_text_view"
-        style="@style/TextViewCityStyle"
+        style="@style/TextViewCityRowStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/city"
