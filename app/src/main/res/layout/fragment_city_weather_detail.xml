@@ -8,13 +8,5 @@
     tools:context=".ui.weatherdetail.FragmentCityWeatherDetail">
 
 
-    <Button
-        android:id="@+id/fragment_city_weather_detail_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Invoke"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

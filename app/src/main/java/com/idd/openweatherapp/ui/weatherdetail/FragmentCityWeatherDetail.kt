@@ -36,11 +36,11 @@ class FragmentCityWeatherDetail : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        fragment_city_weather_detail_button?.setOnClickListener {
-            viewModel.setCityName(cityName)
-            viewModel.currentWeather.observe(viewLifecycleOwner, Observer { userResource ->
-                Log.e("sdf", "sdf")
-            })
-        }
+        viewModel.setCityName(cityName)
+
+        viewModel.currentWeather.observe(viewLifecycleOwner, Observer { userResource ->
+            Log.e("sdf", "sdf")
+        })
+
     }
 }

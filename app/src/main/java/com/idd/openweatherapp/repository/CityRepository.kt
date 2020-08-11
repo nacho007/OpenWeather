@@ -3,6 +3,7 @@ package com.idd.openweatherapp.repository
 import androidx.lifecycle.LiveData
 import com.idd.openweatherapp.api.ApiResponse
 import com.idd.openweatherapp.api.WeatherApi
+import com.idd.openweatherapp.constants.API_KEY
 import com.idd.openweatherapp.db.CurrentWeatherDao
 import com.idd.openweatherapp.model.CurrentWeather
 import javax.inject.Inject
