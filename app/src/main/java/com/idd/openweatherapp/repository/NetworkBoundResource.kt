@@ -20,9 +20,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>
 
     init {
         result.value = Resource.loading(null)
-        val dbSource by lazy {
-            loadFromDb()
-        }
+        val dbSource = loadFromDb()
 
         result.addSource(dbSource) { data ->
             result.removeSource(dbSource)

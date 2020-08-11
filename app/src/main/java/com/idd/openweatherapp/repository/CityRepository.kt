@@ -24,7 +24,8 @@ class CityRepository @Inject constructor(
             }
 
             override fun shouldFetch(data: CurrentWeather?): Boolean {
-                return data == null
+//                return data == null
+                return true
             }
 
             override fun loadFromDb(): LiveData<CurrentWeather> {

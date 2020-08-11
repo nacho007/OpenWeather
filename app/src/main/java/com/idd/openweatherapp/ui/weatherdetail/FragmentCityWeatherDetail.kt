@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.navArgs
 import com.idd.openweatherapp.R
 import com.idd.openweatherapp.ui.OtherActivity
@@ -39,7 +41,12 @@ class FragmentCityWeatherDetail : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         fragment_city_weather_detail_button?.setOnClickListener {
-            viewModel.invokeService(cityName)
+//            viewModel.invokeService(cityName)
+            viewModel.setCityName(cityName)
+
+            viewModel.currentWeather.observe(viewLifecycleOwner, Observer { userResource ->
+                Log.e("sdf", "sdf")
+            })
         }
     }
 
