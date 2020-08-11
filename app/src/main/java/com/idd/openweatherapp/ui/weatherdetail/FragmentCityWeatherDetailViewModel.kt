@@ -1,7 +1,5 @@
 package com.idd.openweatherapp.ui.weatherdetail
 
-import android.util.Log
-import androidx.annotation.Nullable
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
@@ -9,7 +7,6 @@ import com.idd.openweatherapp.model.CurrentWeather
 import com.idd.openweatherapp.repository.CityRepository
 import com.idd.openweatherapp.repository.Resource
 import com.idd.openweatherapp.utils.AbsentLiveData
-import javax.inject.Inject
 
 class FragmentCityWeatherDetailViewModel @ViewModelInject constructor(
     private val cityRepository: CityRepository,
@@ -33,10 +30,4 @@ class FragmentCityWeatherDetailViewModel @ViewModelInject constructor(
                 cityRepository.loadWeather(cityName)
             }
         }
-
-//    fun invokeService(cityName: String) {
-//        Log.e("1", "1")
-//        cityRepository.loadWeather(cityName)
-//        Log.e("2", "2")
-//    }
 }
