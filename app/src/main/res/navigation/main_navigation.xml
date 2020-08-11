@@ -31,7 +31,7 @@
         android:label="fragment_city_weather_detail_fragment"
         tools:layout="@layout/fragment_city_weather_detail" >
         <argument
-            android:name="cityName"
-            app:argType="string" />
+            android:name="city"
+            app:argType="com.idd.openweatherapp.model.City" />
     </fragment>
 </navigation>

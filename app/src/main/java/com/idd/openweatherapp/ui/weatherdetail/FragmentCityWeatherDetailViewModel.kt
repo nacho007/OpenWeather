@@ -3,6 +3,7 @@ package com.idd.openweatherapp.ui.weatherdetail
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.model.CurrentWeather
 import com.idd.openweatherapp.repository.CityRepository
 import com.idd.openweatherapp.repository.Resource
@@ -14,20 +15,20 @@ class FragmentCityWeatherDetailViewModel @ViewModelInject constructor(
 ) :
     ViewModel() {
 
-    private val _cityName = MutableLiveData<String>()
+    private val _city = MutableLiveData<City>()
 
-    fun setCityName(cityName: String) {
-        if (_cityName.value != cityName) {
-            _cityName.value = cityName
+    fun setCityName(city: City) {
+        if (_city.value != city) {
+            _city.value = city
         }
     }
 
     val currentWeather: LiveData<Resource<CurrentWeather>> = Transformations
-        .switchMap(_cityName) { cityName ->
-            if (cityName == null) {
+        .switchMap(_city) { city ->
+            if (city == null) {
                 AbsentLiveData.create()
             } else {
-                cityRepository.loadWeather(cityName)
+                cityRepository.loadWeather(city)
             }
         }
 }

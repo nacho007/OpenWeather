@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface WeatherApi {
     @GET("/data/2.5/weather")
-    fun getWeatherByCityName(
-        @Query("q") query: String
+    fun getWeatherByCityId(
+        @Query("id") query: String
     ): LiveData<ApiResponse<CurrentWeather>>
 }

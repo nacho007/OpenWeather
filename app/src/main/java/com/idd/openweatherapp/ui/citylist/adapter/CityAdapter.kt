@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.idd.openweatherapp.R
+import com.idd.openweatherapp.model.City
 import kotlinx.android.synthetic.main.row_city.view.*
 
 /**
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.row_city.view.*
  */
 
 class CityAdapter(
-    private val cities: ArrayList<String>?,
+    private val cities: ArrayList<City>?,
     private val onCityPressed: OnCityPressed
 ) : RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
 
@@ -32,11 +33,11 @@ class CityAdapter(
 
     class CityViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
 
-        fun setItem(city: String?) {
-            v.row_city_text_view.text = city
+        fun setItem(city: City?) {
+            v.row_city_text_view.text = city?.name
         }
 
-        fun bind(city: String?, onCityPressed: OnCityPressed) {
+        fun bind(city: City?, onCityPressed: OnCityPressed) {
             itemView.setOnClickListener {
                 onCityPressed.onCityPressed(city)
             }

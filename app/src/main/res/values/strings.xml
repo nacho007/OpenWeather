@@ -11,6 +11,7 @@
 
     <string name="min_temp" translatable="false">%1$s° MIN</string>
     <string name="max_temp" translatable="false">%1$s° MAX</string>
+    <string name="temp" translatable="false">%1$s°</string>
 
     <string name="speed_value" translatable="false">%1$s m/s</string>
     <string name="humidity_value" translatable="false">%1$d %%</string>

@@ -14,11 +14,8 @@ interface CurrentWeatherDao {
     // Always holds/caches latest version of data. Notifies its active observers when the
     // data has changed. Since we are getting all the contents of the database,
     // we are notified whenever any of the database contents have changed.
-    @Query("SELECT * from current_weather ORDER BY id ASC")
-    fun getCurrentWeather(): LiveData<CurrentWeather>
-
     @Query("SELECT * from current_weather WHERE id = :id")
-    fun getCurrentWeatherById(id: Int): CurrentWeather
+    fun getCurrentWeatherById(id: Int): LiveData<CurrentWeather>
 
     @Query("SELECT * from current_weather ORDER BY id ASC")
     fun getCurrentWeatherList(): List<CurrentWeather>

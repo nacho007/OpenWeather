@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.idd.openweatherapp.api.ApiResponse
 import com.idd.openweatherapp.api.WeatherApi
-import com.idd.openweatherapp.constants.API_KEY
 import com.idd.openweatherapp.db.CurrentWeatherDao
+import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.model.CurrentWeather
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -19,7 +19,7 @@ class CityRepository @Inject constructor(
     private val currentWeatherDao: CurrentWeatherDao,
     private val weatherApi: WeatherApi
 ) {
-    fun loadWeather(cityName: String): LiveData<Resource<CurrentWeather>> {
+    fun loadWeather(city: City): LiveData<Resource<CurrentWeather>> {
         return object : NetworkBoundResource<CurrentWeather, CurrentWeather>(appExecutors) {
             override fun saveCallResult(item: CurrentWeather) {
                 currentWeatherDao.insert(item)
@@ -32,11 +32,11 @@ class CityRepository @Inject constructor(
             }
 
             override fun loadFromDb(): LiveData<CurrentWeather> {
-                return currentWeatherDao.getCurrentWeather()
+                return currentWeatherDao.getCurrentWeatherById(city.id)
             }
 
             override fun createCall(): LiveData<ApiResponse<CurrentWeather>> {
-                return weatherApi.getWeatherByCityName(query = cityName)
+                return weatherApi.getWeatherByCityId(city.id.toString())
             }
         }.asLiveData()
     }

@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.idd.openweatherapp.R
+import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.ui.citylist.adapter.CityAdapter
 import com.idd.openweatherapp.ui.citylist.adapter.OnCityPressed
 import com.idd.openweatherapp.ui.citylist.adapter.SimpleDividerItemDecoration
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_city_list.*
 @AndroidEntryPoint
 class FragmentCityList : FragmentBase(), OnCityPressed {
 
-    val viewModel: FragmentCityListViewModel by viewModels()
+    private val viewModel: FragmentCityListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +47,11 @@ class FragmentCityList : FragmentBase(), OnCityPressed {
         }
 
         val cityAdapter = CityAdapter(
-            arrayListOf("Montevideo", "Londres", "San Pablo", "Buenos Aires", "Munich"),
+            arrayListOf(
+                City(3441575, "Montevideo"), City(2643743, "Londres"),
+                City(1688830, "San Pablo"), City(3435910, "Buenos Aires"),
+                City(2867714, "Munich")
+            ),
             this
         )
 
@@ -57,10 +62,10 @@ class FragmentCityList : FragmentBase(), OnCityPressed {
         }
     }
 
-    override fun onCityPressed(city: String?) {
+    override fun onCityPressed(city: City?) {
         val action =
             FragmentCityListDirections.actionFragmentCityListToFragmentCityWeatherDetail(
-                city ?: "No City"
+                city ?: City(1, "no_city")
             )
         findNavController().navigate(action)
     }

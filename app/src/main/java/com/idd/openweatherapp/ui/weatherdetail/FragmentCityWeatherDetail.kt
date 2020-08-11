@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.idd.openweatherapp.R
+import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.model.CurrentWeather
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_city_weather_detail.*
@@ -25,7 +26,7 @@ class FragmentCityWeatherDetail : Fragment() {
     private val viewModel: FragmentCityWeatherDetailViewModel by viewModels()
 
     private val args: FragmentCityWeatherDetailArgs by navArgs()
-    lateinit var cityName: String
+    lateinit var city: City
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,13 +36,13 @@ class FragmentCityWeatherDetail : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        cityName = args.cityName
+        city = args.city
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.setCityName(cityName)
+        viewModel.setCityName(city)
 
         viewModel.currentWeather.observe(viewLifecycleOwner, Observer { currentWeather ->
             setDetails(currentWeather.data)
@@ -65,7 +66,7 @@ class FragmentCityWeatherDetail : Fragment() {
                 currentWeather.weather[0].description
 
             fragment_city_weather_detail_temperature_text_view.text =
-                currentWeather.main.temp.toString()
+                getString(R.string.temp, currentWeather.main.temp.toString())
 
             fragment_city_weather_detail_min_temperature_text_view.text =
                 getString(
