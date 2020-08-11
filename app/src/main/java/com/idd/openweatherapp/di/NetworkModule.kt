@@ -60,6 +60,7 @@ object NetworkModule {
 
                 val url = request.url.newBuilder()
                     .addQueryParameter("appid", apiKey)
+                    .addQueryParameter("units", "metric")
                     .build()
 
                 val newRequest = request.newBuilder()

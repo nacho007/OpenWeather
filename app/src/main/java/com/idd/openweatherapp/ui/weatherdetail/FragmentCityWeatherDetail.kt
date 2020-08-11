@@ -13,6 +13,9 @@ import com.idd.openweatherapp.R
 import com.idd.openweatherapp.model.CurrentWeather
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_city_weather_detail.*
+import java.text.DecimalFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 @AndroidEntryPoint
@@ -45,19 +48,71 @@ class FragmentCityWeatherDetail : Fragment() {
     }
 
     private fun setDetails(currentWeather: CurrentWeather?) {
-        fragment_city_weather_detail_city_name_text_view.text = currentWeather?.name
+        Log.e("Updating", currentWeather?.name ?: "null")
 
-        fragment_city_weather_detail_weather_description_text_view.text =
-            currentWeather?.weather?.get(0)?.description
+        currentWeather?.let {
+            fragment_city_weather_detail_city_name_text_view.text = currentWeather.name
 
-        fragment_city_weather_detail_temperature_text_view.text =
-            currentWeather?.main?.temp.toString()
+            fragment_city_weather_detail_weather_description_text_view.text =
+                currentWeather.weather[0].description
 
-        fragment_city_weather_detail_min_temperature_text_view.text =
-            currentWeather?.main?.tempMin?.toString()
+            fragment_city_weather_detail_temperature_text_view.text =
+                currentWeather.main.temp.toString()
 
-        fragment_city_weather_detail_max_temperature_text_view.text =
-            currentWeather?.main?.tempMax?.toString()
+            fragment_city_weather_detail_min_temperature_text_view.text =
+                getString(
+                    R.string.min_temp,
+                    decimalFormatOnlyShowDecimalIfNotZero?.format(currentWeather.main.tempMin)
+                )
 
+            fragment_city_weather_detail_max_temperature_text_view.text =
+                getString(
+                    R.string.max_temp,
+                    decimalFormatOnlyShowDecimalIfNotZero?.format(currentWeather.main.tempMax)
+                )
+
+            fragment_city_weather_detail_wind.setValue(
+                getString(
+                    R.string.speed_value,
+                    currentWeather.wind.speed.toString()
+                )
+            )
+
+            fragment_city_weather_detail_humidity.setValue(
+                getString(
+                    R.string.humidity_value,
+                    currentWeather.main.humidity
+                )
+            )
+
+            fragment_city_weather_detail_sunrise.setValue(
+                getDateTime(
+                    currentWeather.sys.sunrise
+                )
+            )
+
+            fragment_city_weather_detail_sunset.setValue(
+                getDateTime(
+                    currentWeather.sys.sunset
+                )
+            )
+        }
+
+    }
+
+    private var nf: DecimalFormat? = null
+    private val decimalFormatOnlyShowDecimalIfNotZero: DecimalFormat?
+        get() {
+            if (nf == null) {
+                nf = DecimalFormat()
+                nf?.isDecimalSeparatorAlwaysShown = false
+            }
+            return nf
+        }
+
+
+    private fun getDateTime(date: Long): String {
+        val simpleDateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+        return simpleDateFormat.format(Date(date * 1000))
     }
 }
