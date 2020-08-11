@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.idd.openweatherapp.R
+import com.idd.openweatherapp.model.CurrentWeather
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_city_weather_detail.*
 
@@ -39,8 +40,24 @@ class FragmentCityWeatherDetail : Fragment() {
         viewModel.setCityName(cityName)
 
         viewModel.currentWeather.observe(viewLifecycleOwner, Observer { currentWeather ->
-            Log.e("sdf", "sdf")
+            setDetails(currentWeather.data)
         })
+    }
+
+    private fun setDetails(currentWeather: CurrentWeather?) {
+        fragment_city_weather_detail_city_name_text_view.text = currentWeather?.name
+
+        fragment_city_weather_detail_weather_description_text_view.text =
+            currentWeather?.weather?.get(0)?.description
+
+        fragment_city_weather_detail_temperature_text_view.text =
+            currentWeather?.main?.temp.toString()
+
+        fragment_city_weather_detail_min_temperature_text_view.text =
+            currentWeather?.main?.tempMin?.toString()
+
+        fragment_city_weather_detail_max_temperature_text_view.text =
+            currentWeather?.main?.tempMax?.toString()
 
     }
 }

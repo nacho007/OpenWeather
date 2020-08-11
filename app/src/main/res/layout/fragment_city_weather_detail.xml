@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/fragment_city_weather_detail_city_name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_image_view" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/fragment_city_weather_detail_weather_description_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"
@@ -39,10 +39,10 @@
         tools:text="Weather description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_city_name_text_view" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/fragment_city_weather_detail_temperature_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin"
@@ -50,29 +50,29 @@
         tools:text="9°"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_weather_description_text_view" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/fragment_city_weather_detail_min_temperature_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TextViewWeatherTemperatureStyle"
         android:textSize="@dimen/text_size_2"
         tools:text="4° MIN"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_city_weather_detail_temperature_text_view"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_temperature_text_view" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/fragment_city_weather_detail_max_temperature_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TextViewWeatherTemperatureStyle"
         android:textSize="@dimen/text_size_2"
         tools:text="12° MAX"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintStart_toEndOf="@+id/fragment_city_weather_detail_temperature_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_temperature_text_view" />
 
     <com.idd.openweatherapp.ui.weatherdetail.CustomWeatherItemView
         android:id="@+id/fragment_city_weather_detail_wind"
@@ -81,7 +81,7 @@
         android:layout_marginTop="@dimen/margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_min_temperature_text_view"
         app:title="@string/wind" />
 
     <com.idd.openweatherapp.ui.weatherdetail.CustomWeatherItemView

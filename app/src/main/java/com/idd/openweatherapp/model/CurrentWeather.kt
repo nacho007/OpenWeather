@@ -29,7 +29,9 @@ data class CurrentWeather(
     val wind: Wind,
     @field:Embedded
     @field:SerializedName("sys")
-    val sys: Sys
+    val sys: Sys,
+    @field:SerializedName("name")
+    val name: String
 ) {
 
     data class Coord(
@@ -65,10 +67,10 @@ data class CurrentWeather(
         @field:SerializedName("humidity")
         val humidity: Int,
         @ColumnInfo(name = "tempMin")
-        @field:SerializedName("tempMin")
+        @field:SerializedName("temp_min")
         val tempMin: Double,
         @ColumnInfo(name = "tempMax")
-        @field:SerializedName("tempMax")
+        @field:SerializedName("temp_max")
         val tempMax: Double
     )
 
