@@ -67,6 +67,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    implementation 'org.conscrypt:conscrypt-android:2.2.1'
 
     // Navigation
     def nav_version = "2.3.0"
