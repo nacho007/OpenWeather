@@ -46,4 +46,17 @@
         <item name="android:fontFamily">@font/myriadproregular</item>
     </style>
 
+    <style name="TextViewWeatherItemTitleStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">@dimen/text_size_3</item>
+        <item name="android:fontFamily">@font/myriadprolight</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="TextViewWeatherItemValueStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">@dimen/text_size_5</item>
+        <item name="android:fontFamily">@font/myriadproregular</item>
+    </style>
+
 </resources>

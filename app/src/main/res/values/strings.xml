@@ -4,4 +4,8 @@
     <string name="select_a_city">Select a City</string>
     <string name="search_by_current_location">Current Location</string>
     <string name="search">Search</string>
+    <string name="wind">Wind</string>
+    <string name="humidity">Humidity</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
 </resources>

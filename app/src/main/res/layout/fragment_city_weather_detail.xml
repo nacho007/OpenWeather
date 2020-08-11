@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:padding="@dimen/padding"
     tools:context=".ui.weatherdetail.FragmentCityWeatherDetail">
 
 
@@ -73,5 +74,44 @@
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
+    <com.idd.openweatherapp.ui.weatherdetail.CustomWeatherItemView
+        android:id="@+id/fragment_city_weather_detail_wind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:title="@string/wind" />
+
+    <com.idd.openweatherapp.ui.weatherdetail.CustomWeatherItemView
+        android:id="@+id/fragment_city_weather_detail_humidity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_wind"
+        app:title="@string/humidity" />
+
+    <com.idd.openweatherapp.ui.weatherdetail.CustomWeatherItemView
+        android:id="@+id/fragment_city_weather_detail_sunrise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_humidity"
+        app:title="@string/sunrise" />
+
+    <com.idd.openweatherapp.ui.weatherdetail.CustomWeatherItemView
+        android:id="@+id/fragment_city_weather_detail_sunset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_sunrise"
+        app:title="@string/sunset" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
