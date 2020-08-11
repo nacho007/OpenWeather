@@ -10,8 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.idd.openweatherapp.R
 import com.idd.openweatherapp.constants.DELAY
 import com.idd.openweatherapp.ui.common.FragmentBase
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class FragmentSplash : FragmentBase() {
 
     override fun onCreateView(

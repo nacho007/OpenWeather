@@ -14,20 +14,20 @@ import kotlinx.coroutines.launch
  */
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    fun createCurrentWeather(currentWeather: CurrentWeather) =
-        viewModelScope.launch(Dispatchers.IO) {
-            val currentWeatherDao =
-                OpenWeatherDataBase.getDatabase(context = getApplication(), scope = viewModelScope)
-                    .currentWeatherDao()
-            currentWeatherDao.insert(currentWeather)
-            Log.d("TAG1", "success")
-        }
-
-    fun readCurrentWeather() = viewModelScope.launch(Dispatchers.IO) {
-        val currentWeatherDao =
-            OpenWeatherDataBase.getDatabase(context = getApplication(), scope = viewModelScope)
-                .currentWeatherDao()
-        val currentWeather = currentWeatherDao.getCurrentWeather()
-        Log.d("TAG1", currentWeather?.toString()!!)
-    }
+//    fun createCurrentWeather(currentWeather: CurrentWeather) =
+//        viewModelScope.launch(Dispatchers.IO) {
+//            val currentWeatherDao =
+//                OpenWeatherDataBase.getDatabase(context = getApplication(), scope = viewModelScope)
+//                    .currentWeatherDao()
+//            currentWeatherDao.insert(currentWeather)
+//            Log.d("TAG1", "success")
+//        }
+//
+//    fun readCurrentWeather() = viewModelScope.launch(Dispatchers.IO) {
+//        val currentWeatherDao =
+//            OpenWeatherDataBase.getDatabase(context = getApplication(), scope = viewModelScope)
+//                .currentWeatherDao()
+//        val currentWeather = currentWeatherDao.getCurrentWeather()
+//        Log.d("TAG1", currentWeather?.toString()!!)
+//    }
 }
