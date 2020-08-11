@@ -13,6 +13,7 @@ import com.google.gson.annotations.SerializedName
 )
 data class CurrentWeather(
     @PrimaryKey
+    @ColumnInfo(name = "id")
     @field:SerializedName("id")
     val id: Int,
     @field:Embedded

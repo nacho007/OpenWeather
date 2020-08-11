@@ -17,7 +17,13 @@ interface CurrentWeatherDao {
     @Query("SELECT * from current_weather ORDER BY id ASC")
     fun getCurrentWeather(): LiveData<CurrentWeather>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Query("SELECT * from current_weather WHERE id = :id")
+    fun getCurrentWeatherById(id: Int): CurrentWeather
+
+    @Query("SELECT * from current_weather ORDER BY id ASC")
+    fun getCurrentWeatherList(): List<CurrentWeather>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(currentWeather: CurrentWeather)
 
     @Query("DELETE FROM current_weather")

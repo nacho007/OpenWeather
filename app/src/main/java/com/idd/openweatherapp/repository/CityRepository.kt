@@ -1,5 +1,6 @@
 package com.idd.openweatherapp.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.idd.openweatherapp.api.ApiResponse
 import com.idd.openweatherapp.api.WeatherApi
@@ -25,6 +26,7 @@ class CityRepository @Inject constructor(
             }
 
             override fun shouldFetch(data: CurrentWeather?): Boolean {
+                Log.e("shouldFetch", data.toString())
 //                return data == null
                 return true
             }

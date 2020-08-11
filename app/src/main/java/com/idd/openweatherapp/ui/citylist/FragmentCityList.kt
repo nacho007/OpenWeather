@@ -51,6 +51,10 @@ class FragmentCityList : FragmentBase(), OnCityPressed {
         )
 
         fragment_city_list_recycler_view.adapter = cityAdapter
+
+        button_consult?.setOnClickListener {
+            viewModel.consult()
+        }
     }
 
     override fun onCityPressed(city: String?) {
