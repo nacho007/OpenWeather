@@ -13,6 +13,8 @@
         <action
             android:id="@+id/action_fragmentSplash_to_fragmentCityList"
             app:destination="@id/fragmentCityList"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
             app:popUpTo="@id/fragmentSplash"
             app:popUpToInclusive="true" />
     </fragment>
@@ -23,7 +25,10 @@
         tools:layout="@layout/fragment_city_list" >
         <action
             android:id="@+id/action_fragmentCityList_to_fragmentCityWeatherDetail"
-            app:destination="@id/fragmentCityWeatherDetail" />
+            app:destination="@id/fragmentCityWeatherDetail"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/slide_out_down"
+            app:popExitAnim="@anim/slide_out_down" />
     </fragment>
     <fragment
         android:id="@+id/fragmentCityWeatherDetail"
