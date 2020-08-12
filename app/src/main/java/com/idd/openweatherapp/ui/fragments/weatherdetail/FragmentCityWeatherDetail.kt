@@ -69,16 +69,6 @@ class FragmentCityWeatherDetail : Fragment() {
         binding.weatherResource = viewModel.currentWeather
     }
 
-//    override fun onActivityCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//
-//        viewModel.setCityName(city)
-//
-//        viewModel.currentWeather.observe(viewLifecycleOwner, Observer { currentWeather ->
-//            setDetails(currentWeather.data)
-//        })
-//    }
-
     private fun setDetails(currentWeather: CurrentWeather?) {
         Log.e("Updating", currentWeather?.name ?: "null")
 
