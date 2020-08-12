@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.ui
+package com.idd.openweatherapp.ui.activities
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

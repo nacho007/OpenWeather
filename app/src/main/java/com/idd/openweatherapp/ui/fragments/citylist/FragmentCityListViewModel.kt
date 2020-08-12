@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.ui.citylist
+package com.idd.openweatherapp.ui.fragments.citylist
 
 import android.util.Log
 import androidx.hilt.Assisted

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:padding="@dimen/padding"
-    tools:context=".ui.weatherdetail.FragmentCityWeatherDetail">
+    tools:context=".ui.fragments.weatherdetail.FragmentCityWeatherDetail">
 
 
     <ImageView
@@ -74,7 +74,7 @@
         app:layout_constraintStart_toEndOf="@+id/fragment_city_weather_detail_temperature_text_view"
         app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_temperature_text_view" />
 
-    <com.idd.openweatherapp.ui.weatherdetail.CustomWeatherItemView
+    <com.idd.openweatherapp.ui.fragments.weatherdetail.CustomWeatherItemView
         android:id="@+id/fragment_city_weather_detail_wind"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_min_temperature_text_view"
         app:title="@string/wind" />
 
-    <com.idd.openweatherapp.ui.weatherdetail.CustomWeatherItemView
+    <com.idd.openweatherapp.ui.fragments.weatherdetail.CustomWeatherItemView
         android:id="@+id/fragment_city_weather_detail_humidity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_wind"
         app:title="@string/humidity" />
 
-    <com.idd.openweatherapp.ui.weatherdetail.CustomWeatherItemView
+    <com.idd.openweatherapp.ui.fragments.weatherdetail.CustomWeatherItemView
         android:id="@+id/fragment_city_weather_detail_sunrise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_humidity"
         app:title="@string/sunrise" />
 
-    <com.idd.openweatherapp.ui.weatherdetail.CustomWeatherItemView
+    <com.idd.openweatherapp.ui.fragments.weatherdetail.CustomWeatherItemView
         android:id="@+id/fragment_city_weather_detail_sunset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

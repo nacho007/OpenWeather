@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.ui.weatherdetail
+package com.idd.openweatherapp.ui.fragments.weatherdetail
 
 import android.content.Context
 import android.util.AttributeSet

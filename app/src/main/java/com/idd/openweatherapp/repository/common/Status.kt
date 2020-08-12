@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.repository
+package com.idd.openweatherapp.repository.common
 
 /**
  * Created by ignaciodeandreisdenis on 8/10/20.

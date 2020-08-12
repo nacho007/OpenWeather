@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.ui.splash
+package com.idd.openweatherapp.ui.fragments.splash
 
 import android.os.Bundle
 import android.os.Handler

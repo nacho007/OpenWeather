@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.repository
+package com.idd.openweatherapp.repository.implementations
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -7,6 +7,9 @@ import com.idd.openweatherapp.api.WeatherApi
 import com.idd.openweatherapp.db.CurrentWeatherDao
 import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.model.CurrentWeather
+import com.idd.openweatherapp.repository.common.AppExecutors
+import com.idd.openweatherapp.repository.common.NetworkBoundResource
+import com.idd.openweatherapp.repository.common.Resource
 import javax.inject.Inject
 import javax.inject.Singleton
 

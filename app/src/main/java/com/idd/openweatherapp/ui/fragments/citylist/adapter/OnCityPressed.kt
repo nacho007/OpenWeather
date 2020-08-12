@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.ui.citylist.adapter
+package com.idd.openweatherapp.ui.fragments.citylist.adapter
 
 import com.idd.openweatherapp.model.City
 

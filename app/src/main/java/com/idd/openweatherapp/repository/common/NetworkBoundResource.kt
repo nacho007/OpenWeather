@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.repository
+package com.idd.openweatherapp.repository.common
 
 import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
@@ -19,7 +19,8 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     private val result = MediatorLiveData<Resource<ResultType>>()
 
     init {
-        result.value = Resource.loading(null)
+        result.value =
+            Resource.loading(null)
         val dbSource = loadFromDb()
 
         result.addSource(dbSource) { data ->
@@ -28,7 +29,11 @@ abstract class NetworkBoundResource<ResultType, RequestType>
                 fetchFromNetwork(dbSource)
             } else {
                 result.addSource(dbSource) { newData ->
-                    setValue(Resource.success(newData))
+                    setValue(
+                        Resource.success(
+                            newData
+                        )
+                    )
                 }
             }
         }
@@ -44,7 +49,11 @@ abstract class NetworkBoundResource<ResultType, RequestType>
     private fun fetchFromNetwork(dbSource: LiveData<ResultType>) {
         val apiResponse = createCall()
         result.addSource(dbSource) { newData ->
-            setValue(Resource.loading(newData))
+            setValue(
+                Resource.loading(
+                    newData
+                )
+            )
         }
         result.addSource(apiResponse) { response ->
             result.removeSource(apiResponse)
@@ -55,7 +64,11 @@ abstract class NetworkBoundResource<ResultType, RequestType>
                         saveCallResult(processResponse(response))
                         appExecutors.mainThread().execute {
                             result.addSource(loadFromDb()) { newData ->
-                                setValue(Resource.success(newData))
+                                setValue(
+                                    Resource.success(
+                                        newData
+                                    )
+                                )
                             }
                         }
                     }
@@ -63,7 +76,11 @@ abstract class NetworkBoundResource<ResultType, RequestType>
                 is ApiEmptyResponse -> {
                     appExecutors.mainThread().execute {
                         result.addSource(loadFromDb()) { newData ->
-                            setValue(Resource.success(newData))
+                            setValue(
+                                Resource.success(
+                                    newData
+                                )
+                            )
                         }
                     }
                 }

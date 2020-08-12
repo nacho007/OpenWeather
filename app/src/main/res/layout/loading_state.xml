@@ -4,17 +4,17 @@
 
     <data>
 
-        <import type="com.idd.openweatherapp.repository.Resource" />
+        <import type="com.idd.openweatherapp.repository.common.Resource" />
 
-        <import type="com.idd.openweatherapp.repository.Status" />
+        <import type="com.idd.openweatherapp.repository.common.Status" />
 
         <variable
             name="resource"
-            type="Resource" />
+            type="com.idd.openweatherapp.repository.common.Resource" />
 
         <variable
             name="callback"
-            type="com.idd.openweatherapp.repository.RetryCallback" />
+            type="com.idd.openweatherapp.repository.common.RetryCallback" />
     </data>
 
     <LinearLayout

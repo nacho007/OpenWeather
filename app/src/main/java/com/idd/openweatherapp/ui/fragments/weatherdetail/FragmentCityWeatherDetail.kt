@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.ui.weatherdetail
+package com.idd.openweatherapp.ui.fragments.weatherdetail
 
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.idd.openweatherapp.R
 import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.model.CurrentWeather
+
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_city_weather_detail.*
 import java.text.DecimalFormat

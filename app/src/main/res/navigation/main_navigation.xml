@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentSplash"
-        android:name="com.idd.openweatherapp.ui.splash.FragmentSplash"
+        android:name="com.idd.openweatherapp.ui.fragments.splash.FragmentSplash"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentCityList"
-        android:name="com.idd.openweatherapp.ui.citylist.FragmentCityList"
+        android:name="com.idd.openweatherapp.ui.fragments.citylist.FragmentCityList"
         android:label="fragment_city_list_fragment"
         tools:layout="@layout/fragment_city_list" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentCityWeatherDetail"
-        android:name="com.idd.openweatherapp.ui.weatherdetail.FragmentCityWeatherDetail"
+        android:name="com.idd.openweatherapp.ui.fragments.weatherdetail.FragmentCityWeatherDetail"
         android:label="fragment_city_weather_detail_fragment"
         tools:layout="@layout/fragment_city_weather_detail" >
         <argument

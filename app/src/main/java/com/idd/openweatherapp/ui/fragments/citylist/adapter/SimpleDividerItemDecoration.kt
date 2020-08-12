@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.ui.citylist.adapter
+package com.idd.openweatherapp.ui.fragments.citylist.adapter
 
 import android.graphics.Canvas
 import android.graphics.Rect

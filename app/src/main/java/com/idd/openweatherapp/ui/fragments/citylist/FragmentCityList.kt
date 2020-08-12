@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.ui.citylist
+package com.idd.openweatherapp.ui.fragments.citylist
 
 
 import android.os.Bundle
@@ -11,15 +11,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.idd.openweatherapp.R
 import com.idd.openweatherapp.model.City
-import com.idd.openweatherapp.ui.citylist.adapter.CityAdapter
-import com.idd.openweatherapp.ui.citylist.adapter.OnCityPressed
-import com.idd.openweatherapp.ui.citylist.adapter.SimpleDividerItemDecoration
+import com.idd.openweatherapp.ui.fragments.citylist.adapter.CityAdapter
+import com.idd.openweatherapp.ui.fragments.citylist.adapter.OnCityPressed
+import com.idd.openweatherapp.ui.fragments.citylist.adapter.SimpleDividerItemDecoration
 import com.idd.openweatherapp.ui.common.FragmentBase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_city_list.*
 
 @AndroidEntryPoint
-class FragmentCityList : FragmentBase(), OnCityPressed {
+class FragmentCityList : FragmentBase(),
+    OnCityPressed {
 
     private val viewModel: FragmentCityListViewModel by viewModels()
 
@@ -46,14 +47,15 @@ class FragmentCityList : FragmentBase(), OnCityPressed {
             )
         }
 
-        val cityAdapter = CityAdapter(
-            arrayListOf(
-                City(3441575, "Montevideo"), City(2643743, "Londres"),
-                City(1688830, "San Pablo"), City(3435910, "Buenos Aires"),
-                City(2867714, "Munich")
-            ),
-            this
-        )
+        val cityAdapter =
+            CityAdapter(
+                arrayListOf(
+                    City(3441575, "Montevideo"), City(2643743, "Londres"),
+                    City(1688830, "San Pablo"), City(3435910, "Buenos Aires"),
+                    City(2867714, "Munich")
+                ),
+                this
+            )
 
         fragment_city_list_recycler_view.adapter = cityAdapter
 

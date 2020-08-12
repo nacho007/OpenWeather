@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.ui.citylist.adapter
+package com.idd.openweatherapp.ui.fragments.citylist.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +19,9 @@ class CityAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.row_city, parent, false)
-        return CityViewHolder(v)
+        return CityViewHolder(
+            v
+        )
     }
 
     override fun getItemCount(): Int {

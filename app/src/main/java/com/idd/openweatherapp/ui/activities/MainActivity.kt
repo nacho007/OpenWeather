@@ -1,4 +1,4 @@
-package com.idd.openweatherapp.ui
+package com.idd.openweatherapp.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
