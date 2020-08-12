@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/color_17</color>
-    <color name="colorPrimaryDark">@color/color_16</color>
-    <color name="colorAccent">@color/color_22</color>
+    <color name="colorPrimary">#43a047</color>
+    <color name="colorPrimaryDark">#00701a</color>
+    <color name="primaryLightColor">#76d275</color>
+    <color name="colorBackground">#e0e0e0</color>
 
-    <color name="colorText">@color/color_22</color>
+    <color name="colorText">#000000</color>
     <color name="colorShadow">#32c3c3c3</color>
 
     <color name="colorBalloonBackground">@color/color_0</color>

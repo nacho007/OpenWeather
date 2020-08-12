@@ -4,7 +4,7 @@
     <dimen name="margin">16dp</dimen>
     <dimen name="padding">16dp</dimen>
 
-    <dimen name="image_size">50dp</dimen>
+    <dimen name="image_size">75dp</dimen>
 
     <dimen name="shape_balloon_border_radius">8dp</dimen>
     <dimen name="shape_balloon_bottom">2dp</dimen>
