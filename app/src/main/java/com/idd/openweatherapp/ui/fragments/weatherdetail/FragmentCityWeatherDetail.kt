@@ -5,14 +5,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.idd.openweatherapp.R
+import com.idd.openweatherapp.databinding.FragmentCityWeatherDetailBinding
 import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.model.CurrentWeather
+import com.idd.openweatherapp.repository.common.RetryCallback
 
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_city_weather_detail.*
@@ -29,11 +32,29 @@ class FragmentCityWeatherDetail : Fragment() {
     private val args: FragmentCityWeatherDetailArgs by navArgs()
     lateinit var city: City
 
+    lateinit var binding: FragmentCityWeatherDetailBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_city_weather_detail, container, false)
+        binding =
+            DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_city_weather_detail,
+                container,
+                false
+            )
+
+        binding.retryCallback = object : RetryCallback {
+            override fun retry() {
+                Log.e("Retry", "Retry")
+            }
+        }
+
+        binding.weatherResource = viewModel.currentWeather
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
