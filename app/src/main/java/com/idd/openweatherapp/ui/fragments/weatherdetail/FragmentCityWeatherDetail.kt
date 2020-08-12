@@ -46,6 +46,20 @@ class FragmentCityWeatherDetail : Fragment() {
                 false
             )
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        city = args.city
+
+        viewModel.setCityName(city)
+
+        viewModel.currentWeather.observe(viewLifecycleOwner, Observer { currentWeather ->
+            setDetails(currentWeather.data)
+        })
+
+        binding.lifecycleOwner = viewLifecycleOwner
+
         binding.retryCallback = object : RetryCallback {
             override fun retry() {
                 Log.e("Retry", "Retry")
@@ -53,23 +67,17 @@ class FragmentCityWeatherDetail : Fragment() {
         }
 
         binding.weatherResource = viewModel.currentWeather
-
-        return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        city = args.city
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        viewModel.setCityName(city)
-
-        viewModel.currentWeather.observe(viewLifecycleOwner, Observer { currentWeather ->
-            setDetails(currentWeather.data)
-        })
-    }
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//
+//        viewModel.setCityName(city)
+//
+//        viewModel.currentWeather.observe(viewLifecycleOwner, Observer { currentWeather ->
+//            setDetails(currentWeather.data)
+//        })
+//    }
 
     private fun setDetails(currentWeather: CurrentWeather?) {
         Log.e("Updating", currentWeather?.name ?: "null")
