@@ -66,7 +66,7 @@ class FragmentCityWeatherDetail : Fragment() {
             }
         }
 
-        binding.weatherResource = viewModel.currentWeather
+        binding.weatherResource = viewModel
     }
 
     private fun setDetails(currentWeather: CurrentWeather?) {
@@ -80,14 +80,6 @@ class FragmentCityWeatherDetail : Fragment() {
                 .placeholder(R.drawable.svg_splash_icon)
                 .into(fragment_city_weather_detail_image_view)
 
-            fragment_city_weather_detail_city_name_text_view.text = currentWeather.name
-
-            fragment_city_weather_detail_weather_description_text_view.text =
-                currentWeather.weather[0].description
-
-            fragment_city_weather_detail_temperature_text_view.text =
-                getString(R.string.temp, currentWeather.main.temp.toString())
-
             fragment_city_weather_detail_min_temperature_text_view.text =
                 getString(
                     R.string.min_temp,
@@ -99,20 +91,6 @@ class FragmentCityWeatherDetail : Fragment() {
                     R.string.max_temp,
                     decimalFormatOnlyShowDecimalIfNotZero?.format(currentWeather.main.tempMax)
                 )
-
-            fragment_city_weather_detail_wind.setValue(
-                getString(
-                    R.string.speed_value,
-                    currentWeather.wind.speed.toString()
-                )
-            )
-
-            fragment_city_weather_detail_humidity.setValue(
-                getString(
-                    R.string.humidity_value,
-                    currentWeather.main.humidity
-                )
-            )
 
             fragment_city_weather_detail_sunrise.setValue(
                 getDateTime(
@@ -126,7 +104,6 @@ class FragmentCityWeatherDetail : Fragment() {
                 )
             )
         }
-
     }
 
     private fun getIcon(icon: String): String {

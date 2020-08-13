@@ -38,5 +38,4 @@ class FragmentCityWeatherDetailViewModel @ViewModelInject constructor(
             }
         }
 
-
 }

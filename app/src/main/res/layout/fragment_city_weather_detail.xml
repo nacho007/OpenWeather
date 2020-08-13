@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="com.idd.openweatherapp.ui.fragments.weatherdetail.FragmentCityWeatherDetailViewModel" />
+
         <import type="com.idd.openweatherapp.repository.common.Resource" />
 
         <import type="com.idd.openweatherapp.model.CurrentWeather" />
@@ -13,7 +15,7 @@
 
         <variable
             name="weatherResource"
-            type="androidx.lifecycle.LiveData&lt;Resource&lt;CurrentWeather>>" />
+            type="FragmentCityWeatherDetailViewModel" />
 
         <variable
             name="retryCallback"
@@ -31,7 +33,11 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:visibleGone="@{weatherResource.status == Status.SUCCESS}">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibleGone="@{weatherResource.currentWeather.status == Status.SUCCESS}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -41,66 +47,69 @@
                     android:id="@+id/fragment_city_weather_detail_image_view"
                     android:layout_width="@dimen/image_size"
                     android:layout_height="@dimen/image_size"
-                    tools:src="@drawable/svg_splash_icon"
                     android:layout_marginTop="@dimen/margin"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/svg_splash_icon" />
 
                 <TextView
                     android:id="@+id/fragment_city_weather_detail_city_name_text_view"
+                    style="@style/TextViewCityNameStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin"
-                    style="@style/TextViewCityNameStyle"
-                    tools:text="City Name"
+                    android:text="@{weatherResource.currentWeather.data.name}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_image_view" />
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_image_view"
+                    tools:text="City Name" />
 
                 <TextView
                     android:id="@+id/fragment_city_weather_detail_weather_description_text_view"
+                    style="@style/TextViewWeatherDescriptionStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin"
-                    style="@style/TextViewWeatherDescriptionStyle"
-                    tools:text="Weather description"
+                    android:text="@{weatherResource.currentWeather.data.weather.get(0).description}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_city_name_text_view" />
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_city_name_text_view"
+                    tools:text="Weather description" />
 
                 <TextView
                     android:id="@+id/fragment_city_weather_detail_temperature_text_view"
+                    style="@style/TextViewWeatherTemperatureStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin"
-                    style="@style/TextViewWeatherTemperatureStyle"
-                    tools:text="9°"
+                    android:text="@{@string/temp(weatherResource.currentWeather.data.main.temp)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_weather_description_text_view" />
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_weather_description_text_view"
+                    tools:text="9°" />
 
                 <TextView
                     android:id="@+id/fragment_city_weather_detail_min_temperature_text_view"
+                    style="@style/TextViewWeatherTemperatureStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextViewWeatherTemperatureStyle"
                     android:textSize="@dimen/text_size_2"
-                    tools:text="4° MIN"
                     app:layout_constraintEnd_toStartOf="@+id/fragment_city_weather_detail_temperature_text_view"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_temperature_text_view" />
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_temperature_text_view"
+                    tools:text="4° MIN" />
 
                 <TextView
                     android:id="@+id/fragment_city_weather_detail_max_temperature_text_view"
+                    style="@style/TextViewWeatherTemperatureStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/TextViewWeatherTemperatureStyle"
                     android:textSize="@dimen/text_size_2"
-                    tools:text="12° MAX"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/fragment_city_weather_detail_temperature_text_view"
-                    app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_temperature_text_view" />
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_temperature_text_view"
+                    tools:text="12° MAX" />
 
                 <com.idd.openweatherapp.ui.fragments.weatherdetail.CustomWeatherItemView
                     android:id="@+id/fragment_city_weather_detail_wind"
@@ -110,7 +119,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_min_temperature_text_view"
-                    app:title="@string/wind" />
+                    app:title="@string/wind"
+                    app:value="@{@string/speed_value(weatherResource.currentWeather.data.wind.speed)}" />
 
                 <com.idd.openweatherapp.ui.fragments.weatherdetail.CustomWeatherItemView
                     android:id="@+id/fragment_city_weather_detail_humidity"
@@ -120,7 +130,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fragment_city_weather_detail_wind"
-                    app:title="@string/humidity" />
+                    app:title="@string/humidity"
+                    app:value="@{@string/humidity_value(weatherResource.currentWeather.data.main.humidity)}" />
 
                 <com.idd.openweatherapp.ui.fragments.weatherdetail.CustomWeatherItemView
                     android:id="@+id/fragment_city_weather_detail_sunrise"
@@ -148,7 +159,7 @@
 
         <include
             layout="@layout/loading_state"
-            app:resource="@{(Resource) weatherResource}"
+            app:resource="@{(Resource) weatherResource.currentWeather}"
             app:callback="@{() -> retryCallback.retry()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -159,7 +170,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
