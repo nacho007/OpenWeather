@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -22,42 +23,43 @@
         app:visibleGone="@{resource.data == null}"
         android:layout_width="wrap_content"
         android:layout_margin="@dimen/margin"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/shape_balloon_alone_green"
         android:gravity="center"
         android:padding="@dimen/padding"
         android:layout_height="wrap_content">
 
         <ProgressBar
             app:visibleGone="@{resource.status == Status.LOADING}"
-            style="?android:attr/progressBarStyle"
+            style="@style/AstroPayProgressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/progress_bar"
             android:layout_margin="8dp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/retry"
-            android:id="@+id/retry"
-            android:onClick="@{() -> callback.retry()}"
-            app:visibleGone="@{resource.status == Status.ERROR || resource.status == Status.NETWORK_ERROR}" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/error_network_msg"
             android:text="@string/network_error"
-            android:layout_marginTop="8dp"
             android:textAlignment="center"
+            style="@style/TextViewErrorStyle"
             app:visibleGone="@{resource.status == Status.NETWORK_ERROR}" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/error_msg"
-            android:layout_marginTop="8dp"
+            style="@style/TextViewErrorStyle"
             android:text="@{resource.message ?? @string/unknown_error}"
             app:visibleGone="@{resource.status == Status.ERROR}" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/retry"
+            android:id="@+id/retry"
+            android:layout_marginTop="@dimen/margin"
+            android:onClick="@{() -> callback.retry()}"
+            app:visibleGone="@{resource.status == Status.ERROR || resource.status == Status.NETWORK_ERROR}" />
     </LinearLayout>
 </layout>
