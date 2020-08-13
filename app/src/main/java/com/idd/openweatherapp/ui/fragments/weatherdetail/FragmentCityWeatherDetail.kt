@@ -62,7 +62,7 @@ class FragmentCityWeatherDetail : Fragment() {
 
         binding.retryCallback = object : RetryCallback {
             override fun retry() {
-                Log.e("Retry", "Retry")
+                viewModel.retry()
             }
         }
 

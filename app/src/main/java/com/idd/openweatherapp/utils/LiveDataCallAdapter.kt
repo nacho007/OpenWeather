@@ -24,11 +24,6 @@ class LiveDataCallAdapter<R> (private val responseType: Type):
                 if(started.compareAndSet(false, true)){
                     call.enqueue(object : Callback<R> {
                         override fun onFailure(call: Call<R>, t: Throwable) {
-
-                            if (t is IOException) {
-                                Log.e("asd","")
-                            }
-
                             postValue(ApiResponse.create(t))
                         }
 

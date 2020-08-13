@@ -23,6 +23,14 @@ data class Resource<out T>(val status: Status, val data: T?, val message: String
             )
         }
 
+        fun <T> networkError(data: T?): Resource<T> {
+            return Resource(
+                Status.NETWORK_ERROR,
+                data,
+                null
+            )
+        }
+
         fun <T> loading(data: T?): Resource<T> {
             return Resource(
                 Status.LOADING,

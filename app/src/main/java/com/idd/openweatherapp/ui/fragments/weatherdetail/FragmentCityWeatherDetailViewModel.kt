@@ -23,6 +23,12 @@ class FragmentCityWeatherDetailViewModel @ViewModelInject constructor(
         }
     }
 
+    fun retry() {
+        _city.value?.let {
+            _city.value = it
+        }
+    }
+
     val currentWeather: LiveData<Resource<CurrentWeather>> = Transformations
         .switchMap(_city) { city ->
             if (city == null) {
@@ -31,4 +37,6 @@ class FragmentCityWeatherDetailViewModel @ViewModelInject constructor(
                 cityRepository.loadWeather(city)
             }
         }
+
+
 }

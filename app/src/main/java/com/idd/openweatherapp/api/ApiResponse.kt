@@ -1,6 +1,8 @@
 package com.idd.openweatherapp.api
 
+import android.util.Log
 import retrofit2.Response
+import java.io.IOException
 
 /**
  * Created by ignaciodeandreisdenis on 8/10/20.
@@ -8,8 +10,12 @@ import retrofit2.Response
 
 sealed class ApiResponse<T> {
     companion object {
-        fun <T> create(error: Throwable): ApiErrorResponse<T> {
-            return ApiErrorResponse(error.message ?: "unknown error")
+        fun <T> create(error: Throwable): ApiResponse<T> {
+            return if (error is IOException) {
+                ApiNetworkErrorResponse()
+            } else {
+                ApiErrorResponse(error.message ?: "unknown error")
+            }
         }
 
         fun <T> create(response: Response<T>): ApiResponse<T> {
@@ -40,3 +46,5 @@ data class ApiSuccessResponse<T>(val body: T) : ApiResponse<T>()
 data class ApiErrorResponse<T>(
     val errorMessage: String
 ) : ApiResponse<T>()
+
+class ApiNetworkErrorResponse<T> : ApiResponse<T>()

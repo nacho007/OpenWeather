@@ -21,6 +21,8 @@
         android:orientation="vertical"
         app:visibleGone="@{resource.data == null}"
         android:layout_width="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:padding="@dimen/padding"
         android:layout_height="wrap_content">
@@ -39,12 +41,22 @@
             android:text="@string/retry"
             android:id="@+id/retry"
             android:onClick="@{() -> callback.retry()}"
-            app:visibleGone="@{resource.status == Status.ERROR}" />
+            app:visibleGone="@{resource.status == Status.ERROR || resource.status == Status.NETWORK_ERROR}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_network_msg"
+            android:text="@string/network_error"
+            android:layout_marginTop="8dp"
+            android:textAlignment="center"
+            app:visibleGone="@{resource.status == Status.NETWORK_ERROR}" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/error_msg"
+            android:layout_marginTop="8dp"
             android:text="@{resource.message ?? @string/unknown_error}"
             app:visibleGone="@{resource.status == Status.ERROR}" />
     </LinearLayout>

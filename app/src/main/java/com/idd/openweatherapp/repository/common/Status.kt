@@ -6,5 +6,6 @@ package com.idd.openweatherapp.repository.common
 enum class Status {
     LOADING,
     SUCCESS,
-    ERROR
+    ERROR,
+    NETWORK_ERROR
 }

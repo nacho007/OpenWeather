@@ -4,10 +4,7 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.idd.openweatherapp.api.ApiEmptyResponse
-import com.idd.openweatherapp.api.ApiErrorResponse
-import com.idd.openweatherapp.api.ApiResponse
-import com.idd.openweatherapp.api.ApiSuccessResponse
+import com.idd.openweatherapp.api.*
 
 
 /**
@@ -90,6 +87,17 @@ abstract class NetworkBoundResource<ResultType, RequestType>
                         setValue(
                             Resource.error(
                                 response.errorMessage,
+                                newData
+                            )
+                        )
+                    }
+                }
+
+                is ApiNetworkErrorResponse -> {
+                    onFetchFailed()
+                    result.addSource(dbSource) { newData ->
+                        setValue(
+                            Resource.networkError(
                                 newData
                             )
                         )
