@@ -15,12 +15,17 @@ import com.idd.openweatherapp.ui.fragments.citylist.adapter.CityAdapter
 import com.idd.openweatherapp.ui.fragments.citylist.adapter.OnCityPressed
 import com.idd.openweatherapp.ui.fragments.citylist.adapter.SimpleDividerItemDecoration
 import com.idd.openweatherapp.ui.common.FragmentBase
+import com.idd.openweatherapp.utils.CityProvider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_city_list.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class FragmentCityList : FragmentBase(),
     OnCityPressed {
+
+    @Inject
+    lateinit var cities: CityProvider
 
     private val viewModel: FragmentCityListViewModel by viewModels()
 
@@ -48,14 +53,7 @@ class FragmentCityList : FragmentBase(),
         }
 
         val cityAdapter =
-            CityAdapter(
-                arrayListOf(
-                    City(3441575, "Montevideo"), City(2643743, "Londres"),
-                    City(1688830, "San Pablo"), City(3435910, "Buenos Aires"),
-                    City(2867714, "Munich")
-                ),
-                this
-            )
+            CityAdapter(cities.provideCities(requireContext()), this)
 
         fragment_city_list_recycler_view.adapter = cityAdapter
 

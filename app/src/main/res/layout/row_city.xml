@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/row_city_constraint_layout"
     android:background="@drawable/selector_list_item"
     android:layout_width="match_parent"
@@ -9,12 +10,23 @@
     <TextView
         android:id="@+id/row_city_text_view"
         style="@style/TextViewCityRowStyle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/city"
         android:padding="@dimen/padding"
+        android:text="@string/city"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/row_city_image_view"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="ABCDEFGHIJKLM" />
+
+    <ImageView
+        android:id="@+id/row_city_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/svg_location_pin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

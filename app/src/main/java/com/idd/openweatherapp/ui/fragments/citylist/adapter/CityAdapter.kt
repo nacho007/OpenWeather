@@ -36,6 +36,11 @@ class CityAdapter(
     class CityViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
 
         fun setItem(city: City?) {
+            if (city?.name == v.context.getString(R.string.current_location)) {
+                v.row_city_image_view.visibility = View.VISIBLE
+            } else {
+                v.row_city_image_view.visibility = View.GONE
+            }
             v.row_city_text_view.text = city?.name
         }
 
