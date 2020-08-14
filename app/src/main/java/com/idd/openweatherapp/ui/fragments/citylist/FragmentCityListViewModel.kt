@@ -3,32 +3,32 @@ package com.idd.openweatherapp.ui.fragments.citylist
 import android.util.Log
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.idd.openweatherapp.db.CurrentWeatherDao
-import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.*
+import com.idd.openweatherapp.model.City
+import com.idd.openweatherapp.repository.implementations.CityRepository
 import kotlinx.coroutines.launch
 
 class FragmentCityListViewModel @ViewModelInject constructor(
-    private val currentWeatherDao: CurrentWeatherDao,
+    var cityRepository: CityRepository,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) :
     ViewModel() {
 
+    private val _cities = MutableLiveData<List<City>>()
 
-    fun consult() {
-        viewModelScope.launch(Dispatchers.IO) {
-//            val currentWeather = currentWeatherDao.getCurrentWeatherById(2643743)
-//            Log.e("currentWeather", currentWeather.toString())
+    val cities: LiveData<List<City>> = _cities
 
-            val currentWeatherList = currentWeatherDao.getCurrentWeatherList()
-
-            currentWeatherList.forEach {
-                Log.e("currentWeather", it.toString())
-            }
-
-        }
+    init {
+        loadCities()
     }
 
+    private fun loadCities() {
+        viewModelScope.launch {
+            try {
+                _cities.value = cityRepository.provideCities()
+            } catch (e: Exception) {
+                Log.v("ERROR", e.toString())
+            }
+        }
+    }
 }
