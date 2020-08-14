@@ -5,12 +5,12 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.model.CurrentWeather
-import com.idd.openweatherapp.repository.implementations.CityRepository
+import com.idd.openweatherapp.repository.implementations.WeatherRepository
 import com.idd.openweatherapp.repository.common.Resource
 import com.idd.openweatherapp.utils.AbsentLiveData
 
 class FragmentCityWeatherDetailViewModel @ViewModelInject constructor(
-    private val cityRepository: CityRepository,
+    private val weatherRepository: WeatherRepository,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) :
     ViewModel() {
@@ -34,7 +34,7 @@ class FragmentCityWeatherDetailViewModel @ViewModelInject constructor(
             if (city == null) {
                 AbsentLiveData.create()
             } else {
-                cityRepository.loadWeather(city)
+                weatherRepository.loadWeather(city)
             }
         }
 

@@ -11,11 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.idd.openweatherapp.R
 import com.idd.openweatherapp.model.City
+import com.idd.openweatherapp.repository.implementations.CityRepository
 import com.idd.openweatherapp.ui.fragments.citylist.adapter.CityAdapter
 import com.idd.openweatherapp.ui.fragments.citylist.adapter.OnCityPressed
 import com.idd.openweatherapp.ui.fragments.citylist.adapter.SimpleDividerItemDecoration
 import com.idd.openweatherapp.ui.common.FragmentBase
-import com.idd.openweatherapp.utils.CityProvider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_city_list.*
 import javax.inject.Inject
@@ -25,7 +25,7 @@ class FragmentCityList : FragmentBase(),
     OnCityPressed {
 
     @Inject
-    lateinit var cities: CityProvider
+    lateinit var cityRepository: CityRepository
 
     private val viewModel: FragmentCityListViewModel by viewModels()
 
@@ -53,7 +53,7 @@ class FragmentCityList : FragmentBase(),
         }
 
         val cityAdapter =
-            CityAdapter(cities.provideCities(requireContext()), this)
+            CityAdapter(cityRepository.provideCities(requireContext()), this)
 
         fragment_city_list_recycler_view.adapter = cityAdapter
 
