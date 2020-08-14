@@ -1,7 +1,5 @@
 package com.idd.openweatherapp.repository.common
 
-import com.idd.openweatherapp.repository.common.Status
-
 /**
  * Created by ignaciodeandreisdenis on 8/10/20.
  */

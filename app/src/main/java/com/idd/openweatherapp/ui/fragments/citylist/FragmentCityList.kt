@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.idd.openweatherapp.R
 import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.repository.implementations.CityRepository
+import com.idd.openweatherapp.ui.common.FragmentBase
 import com.idd.openweatherapp.ui.fragments.citylist.adapter.CityAdapter
 import com.idd.openweatherapp.ui.fragments.citylist.adapter.OnCityPressed
 import com.idd.openweatherapp.ui.fragments.citylist.adapter.SimpleDividerItemDecoration
-import com.idd.openweatherapp.ui.common.FragmentBase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_city_list.*
 import javax.inject.Inject

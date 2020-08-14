@@ -5,8 +5,8 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.model.CurrentWeather
-import com.idd.openweatherapp.repository.implementations.WeatherRepository
 import com.idd.openweatherapp.repository.common.Resource
+import com.idd.openweatherapp.repository.implementations.WeatherRepository
 import com.idd.openweatherapp.utils.AbsentLiveData
 
 class FragmentCityWeatherDetailViewModel @ViewModelInject constructor(

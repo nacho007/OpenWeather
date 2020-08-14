@@ -1,13 +1,11 @@
 package com.idd.openweatherapp.utils
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.idd.openweatherapp.api.ApiResponse
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.IOException
 import java.lang.reflect.Type
 import java.util.concurrent.atomic.AtomicBoolean
 

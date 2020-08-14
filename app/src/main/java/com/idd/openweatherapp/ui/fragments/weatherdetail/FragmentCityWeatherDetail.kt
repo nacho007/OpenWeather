@@ -92,16 +92,15 @@ class FragmentCityWeatherDetail : Fragment() {
                     decimalFormatOnlyShowDecimalIfNotZero?.format(currentWeather.main.tempMax)
                 )
 
-            val timeZone = currentWeather.sys.country
             fragment_city_weather_detail_sunrise.setValue(
                 getDateTime(
-                    currentWeather.sys.sunrise, timeZone
+                    currentWeather.sys.sunrise
                 )
             )
 
             fragment_city_weather_detail_sunset.setValue(
                 getDateTime(
-                    currentWeather.sys.sunset, timeZone
+                    currentWeather.sys.sunset
                 )
             )
         }
@@ -122,9 +121,8 @@ class FragmentCityWeatherDetail : Fragment() {
         }
 
 
-    private fun getDateTime(date: Long, timeZone: String): String {
+    private fun getDateTime(date: Long): String {
         val simpleDateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-        simpleDateFormat.timeZone = TimeZone.getTimeZone(timeZone)
         return simpleDateFormat.format(Date(date * 1000))
     }
 }

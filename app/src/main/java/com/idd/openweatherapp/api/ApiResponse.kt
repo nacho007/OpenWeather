@@ -1,6 +1,5 @@
 package com.idd.openweatherapp.api
 
-import android.util.Log
 import retrofit2.Response
 import java.io.IOException
 
