@@ -3,8 +3,6 @@ package com.idd.openweatherapp.ui.fragments.citylist
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +15,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.idd.openweatherapp.R
+import com.idd.openweatherapp.constants.CURRENT_LOCATION_ID
 import com.idd.openweatherapp.model.City
-import com.idd.openweatherapp.repository.implementations.CURRENT_LOCATION_ID
 import com.idd.openweatherapp.repository.implementations.CityRepository
 import com.idd.openweatherapp.ui.common.FragmentBase
 import com.idd.openweatherapp.ui.fragments.citylist.adapter.CitiesAdapter
@@ -31,7 +29,6 @@ import javax.inject.Inject
 class FragmentCityList : FragmentBase() {
 
     companion object {
-        private const val CURRENT_LOCATION = -1
         private const val MY_PERMISSIONS_REQUEST_LOCATION = 3000
     }
 
@@ -73,7 +70,7 @@ class FragmentCityList : FragmentBase() {
     private fun navigateToWeatherDetails(city: City?) {
         val action =
             FragmentCityListDirections.actionFragmentCityListToFragmentCityWeatherDetail(
-                city ?: City(CURRENT_LOCATION, "Current Location")
+                city ?: City(CURRENT_LOCATION_ID, "Current Location")
             )
         findNavController().navigate(action)
     }
@@ -160,29 +157,4 @@ class FragmentCityList : FragmentBase() {
             }
         }
     }
-
-
-    private class MyLocationListener : LocationListener {
-        override fun onLocationChanged(location: Location) {
-//            val textView: TextView = findViewById<TextView>(R.id.location)
-//            textView.text = location.latitude.toString() + ", " + location.longitude
-        }
-
-        override fun onStatusChanged(
-            provider: String,
-            status: Int,
-            extras: Bundle
-        ) {
-        }
-
-        override fun onProviderEnabled(provider: String) {
-//            Toast.makeText(
-//                this@LocationActivity,
-//                "Provider enabled: $provider", Toast.LENGTH_SHORT
-//            ).show()
-        }
-
-        override fun onProviderDisabled(provider: String) {}
-    }
-
 }

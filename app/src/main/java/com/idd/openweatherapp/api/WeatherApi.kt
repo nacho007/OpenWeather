@@ -10,4 +10,10 @@ interface WeatherApi {
     fun getWeatherByCityId(
         @Query("id") query: String
     ): LiveData<ApiResponse<CurrentWeather>>
+
+    @GET("/data/2.5/weather")
+    fun getWeatherByCoordinates(
+        @Query("lat") lat: Double,
+        @Query("lon") lon: Double
+    ): LiveData<ApiResponse<CurrentWeather>>
 }

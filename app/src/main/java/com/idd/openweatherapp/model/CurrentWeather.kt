@@ -15,7 +15,7 @@ data class CurrentWeather(
     @PrimaryKey
     @ColumnInfo(name = "id")
     @field:SerializedName("id")
-    val id: Int,
+    var id: Int,
     @field:Embedded
     @field:SerializedName("coord")
     val coord: Coord,
@@ -87,7 +87,7 @@ data class CurrentWeather(
     data class Sys(
         @ColumnInfo(name = "country")
         @field:SerializedName("country")
-        val country: String,
+        val country: String?,
         @ColumnInfo(name = "sunrise")
         @field:SerializedName("sunrise")
         val sunrise: Long,

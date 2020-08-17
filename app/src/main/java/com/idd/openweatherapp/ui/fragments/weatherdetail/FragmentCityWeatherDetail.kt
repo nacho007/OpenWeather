@@ -1,5 +1,7 @@
 package com.idd.openweatherapp.ui.fragments.weatherdetail
 
+import android.location.Location
+import android.location.LocationListener
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,11 +14,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.idd.openweatherapp.R
+import com.idd.openweatherapp.constants.CURRENT_LOCATION_ID
 import com.idd.openweatherapp.databinding.FragmentCityWeatherDetailBinding
 import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.model.CurrentWeather
 import com.idd.openweatherapp.repository.common.RetryCallback
-
+import com.idd.openweatherapp.utils.BoundLocationManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_city_weather_detail.*
 import java.text.DecimalFormat
@@ -25,7 +28,7 @@ import java.util.*
 
 
 @AndroidEntryPoint
-class FragmentCityWeatherDetail : Fragment() {
+class FragmentCityWeatherDetail : Fragment(), LocationListener {
 
     private val viewModel: FragmentCityWeatherDetailViewModel by viewModels()
 
@@ -33,6 +36,12 @@ class FragmentCityWeatherDetail : Fragment() {
     lateinit var city: City
 
     private lateinit var binding: FragmentCityWeatherDetailBinding
+
+    private lateinit var mGpsListener: LocationListener
+
+    private fun bindLocationListener() {
+        BoundLocationManager.bindLocationListenerIn(this, mGpsListener, requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +61,13 @@ class FragmentCityWeatherDetail : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         city = args.city
 
-        viewModel.setCityName(city)
+        mGpsListener = this
+
+        if (city.id == CURRENT_LOCATION_ID) {
+            bindLocationListener()
+        } else {
+            viewModel.setCityName(city)
+        }
 
         viewModel.currentWeather.observe(viewLifecycleOwner, Observer { currentWeather ->
             setDetails(currentWeather.data)
@@ -104,6 +119,11 @@ class FragmentCityWeatherDetail : Fragment() {
                 )
             )
         }
+    }
+
+    override fun onLocationChanged(location: Location) {
+        viewModel.setLocation(location)
+        viewModel.setCityName(city)
     }
 
     private fun getIcon(icon: String): String {

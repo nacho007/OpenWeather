@@ -1,8 +1,10 @@
 package com.idd.openweatherapp.ui.fragments.weatherdetail
 
+import android.location.Location
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.idd.openweatherapp.constants.CURRENT_LOCATION_ID
 import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.model.CurrentWeather
 import com.idd.openweatherapp.repository.common.Resource
@@ -16,6 +18,11 @@ class FragmentCityWeatherDetailViewModel @ViewModelInject constructor(
     ViewModel() {
 
     private val _city = MutableLiveData<City>()
+    private var location: Location? = null
+
+    fun setLocation(location: Location) {
+        this.location = location
+    }
 
     fun setCityName(city: City) {
         if (_city.value != city) {
@@ -34,7 +41,15 @@ class FragmentCityWeatherDetailViewModel @ViewModelInject constructor(
             if (city == null) {
                 AbsentLiveData.create()
             } else {
-                weatherRepository.loadWeather(city)
+                if (city.id == CURRENT_LOCATION_ID) {
+                    weatherRepository.loadWeatherByCoordinates(
+                        city.id,
+                        location?.latitude ?: 0.0,
+                        location?.longitude ?: 0.0
+                    )
+                } else {
+                    weatherRepository.loadWeather(city.id)
+                }
             }
         }
 

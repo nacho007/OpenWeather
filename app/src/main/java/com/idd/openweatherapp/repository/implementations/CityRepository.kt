@@ -1,5 +1,6 @@
 package com.idd.openweatherapp.repository.implementations
 
+import com.idd.openweatherapp.constants.CURRENT_LOCATION_ID
 import com.idd.openweatherapp.model.City
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -7,8 +8,6 @@ import javax.inject.Singleton
 /**
  * Created by ignaciodeandreisdenis on 8/14/20.
  */
-
-const val CURRENT_LOCATION_ID = -1
 
 @Singleton
 class CityRepository @Inject constructor() {

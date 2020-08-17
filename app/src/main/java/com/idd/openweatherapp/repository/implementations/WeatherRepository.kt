@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import com.idd.openweatherapp.api.ApiResponse
 import com.idd.openweatherapp.api.WeatherApi
 import com.idd.openweatherapp.db.CurrentWeatherDao
-import com.idd.openweatherapp.model.City
 import com.idd.openweatherapp.model.CurrentWeather
 import com.idd.openweatherapp.repository.common.AppExecutors
 import com.idd.openweatherapp.repository.common.NetworkBoundResource
@@ -22,7 +21,7 @@ class WeatherRepository @Inject constructor(
     private val currentWeatherDao: CurrentWeatherDao,
     private val weatherApi: WeatherApi
 ) {
-    fun loadWeather(city: City): LiveData<Resource<CurrentWeather>> {
+    fun loadWeather(cityId: Int): LiveData<Resource<CurrentWeather>> {
         return object : NetworkBoundResource<CurrentWeather, CurrentWeather>(appExecutors) {
             override fun saveCallResult(item: CurrentWeather) {
                 currentWeatherDao.insert(item)
@@ -35,11 +34,36 @@ class WeatherRepository @Inject constructor(
             }
 
             override fun loadFromDb(): LiveData<CurrentWeather> {
-                return currentWeatherDao.getCurrentWeatherById(city.id)
+                return currentWeatherDao.getCurrentWeatherById(cityId)
             }
 
             override fun createCall(): LiveData<ApiResponse<CurrentWeather>> {
-                return weatherApi.getWeatherByCityId(city.id.toString())
+                return weatherApi.getWeatherByCityId(cityId.toString())
+            }
+        }.asLiveData()
+    }
+
+    fun loadWeatherByCoordinates(
+        cityId: Int,
+        lat: Double,
+        lon: Double
+    ): LiveData<Resource<CurrentWeather>> {
+        return object : NetworkBoundResource<CurrentWeather, CurrentWeather>(appExecutors) {
+            override fun saveCallResult(item: CurrentWeather) {
+                item.id = cityId
+                currentWeatherDao.insert(item)
+            }
+
+            override fun shouldFetch(data: CurrentWeather?): Boolean {
+                return true
+            }
+
+            override fun loadFromDb(): LiveData<CurrentWeather> {
+                return currentWeatherDao.getCurrentWeatherById(cityId)
+            }
+
+            override fun createCall(): LiveData<ApiResponse<CurrentWeather>> {
+                return weatherApi.getWeatherByCoordinates(lat, lon)
             }
         }.asLiveData()
     }
