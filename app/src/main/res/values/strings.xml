@@ -21,4 +21,6 @@
     <string name="retry" translatable="false">Retry</string>
     <string name="unknown_error" translatable="false">Unknown Error</string>
     <string name="network_error">"Internet connection not detected. Please check your connection and try again."</string>
+    <string name="permissions">To see the weather in current location, enable Permission</string>
+    <string name="accept">Accept</string>
 </resources>

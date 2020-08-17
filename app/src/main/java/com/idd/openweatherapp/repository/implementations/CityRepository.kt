@@ -7,12 +7,15 @@ import javax.inject.Singleton
 /**
  * Created by ignaciodeandreisdenis on 8/14/20.
  */
+
+const val CURRENT_LOCATION_ID = -1
+
 @Singleton
 class CityRepository @Inject constructor() {
 
     fun provideCities(): ArrayList<City> {
         return arrayListOf(
-            City(-1, "Current Location"), City(3441575, "Montevideo"),
+            City(CURRENT_LOCATION_ID, "Current Location"), City(3441575, "Montevideo"),
             City(2643743, "Londres"), City(1688830, "San Pablo"),
             City(3435910, "Buenos Aires"), City(2867714, "Munich")
         )
