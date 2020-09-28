@@ -16,7 +16,7 @@ class CityRepository @Inject constructor() {
         return arrayListOf(
             City(CURRENT_LOCATION_ID, "Current Location"), City(3441575, "Montevideo"),
             City(2643743, "Londres"), City(1688830, "San Pablo"),
-            City(3435910, "Buenos Aires"), City(2867714, "Munich")
+            City(3435910, "Buenos Aires"), City(2867714, "Munich"), City(2867714, "Santiago de Chile")
         )
     }
 }
