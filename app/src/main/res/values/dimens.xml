@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splash_icon_size">100dp</dimen>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="padding">16dp</dimen>
+
+    <dimen name="image_size">75dp</dimen>
+
+    <dimen name="shape_balloon_border_radius">8dp</dimen>
+    <dimen name="shape_balloon_bottom">2dp</dimen>
+
+    <dimen name="text_size_0">12sp</dimen>
+    <dimen name="text_size_1">14sp</dimen>
+    <dimen name="text_size_2">16sp</dimen>
+    <dimen name="text_size_3">18sp</dimen>
+    <dimen name="text_size_4">20sp</dimen>
+    <dimen name="text_size_5">22sp</dimen>
+    <dimen name="text_size_6">28sp</dimen>
+    <dimen name="text_size_7">32sp</dimen>
+</resources>

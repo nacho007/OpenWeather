@@ -1,3 +1,26 @@
 <resources>
-    <string name="app_name">OpenWeatherApp</string>
+    <string name="app_name">Weather</string>
+    <string name="city">City</string>
+    <string name="select_a_city">Select a City</string>
+    <string name="search_by_current_location">Current Location</string>
+    <string name="search">Search</string>
+    <string name="wind">Wind</string>
+    <string name="humidity">Humidity</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+
+    <string name="min_temp" translatable="false">%1$s° MIN</string>
+    <string name="max_temp" translatable="false">%1$s° MAX</string>
+    <string name="temp" translatable="false">%1$s°</string>
+
+    <string name="speed_value" translatable="false">%1$s m/s</string>
+    <string name="humidity_value" translatable="false">%1$d %%</string>
+
+    <string name="current_location" translatable="false">Current Location</string>
+
+    <string name="retry" translatable="false">Retry</string>
+    <string name="unknown_error" translatable="false">Unknown Error</string>
+    <string name="network_error">"Internet connection not detected. Please check your connection and try again."</string>
+    <string name="permissions">To see the weather in current location, enable Permission</string>
+    <string name="accept">Accept</string>
 </resources>
